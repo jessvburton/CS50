@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}{% endblock %}
+
+{% block main %}
+    <h1>Select your Pocket Monsters</h1>
+    <p>Select the two Pokemon you would like to compare...</p>
+    <form action="/comparison" method="POST">
+        <fieldset>
+            <div class="form-group">
+                <input autocomplete="on" autofocus name="option1" placeholder="Option 1" type="text" id="option1">
+                <input autocomplete="on" autofocus name="option2" placeholder="Option 2" type="text" id="option2">
+                <input type="submit" class="btn btn-outline-danger">
+            </div>
+        </fieldset>
+    </form>
+{% endblock %}
