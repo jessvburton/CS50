@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+
+{% block main %}
+
+    <h2>PORTFOLIO</h2>
+
+
+<table class="table table-striped">
+
+        <thead>
+            <th>Stock Symbol</th>
+            <th>Company Name</th>
+            <th>Number of Shares</th>
+            <th>Current Price</th>
+            <th>TOTAL</th>
+            <th>Buy Options</th>
+            <th>Sell Options</th>
+        </thead>
+
+         {% for row in rows %}
+            <tr>
+                <td>{{ row["symbol"] }}</td>
+                <td>{{ row["name"] }}</td>
+                <td>{{ row["shares"] }}</td>
+                <td>{{ row["current_price"] }}</td>
+                <td>{{ row["total"] }}</td>
+                <td><form action="/buy" method="post">
+                         <div class="form-group">
+                         <input type="hidden" name="symbol" type="text" value="{{ row['symbol'] }}"/>
+                         <input autocomplete="off" autofocus class="form-control" size="6" name="shares" placeholder="Shares" type="text">
+                         <button class="btn btn-default" type="submit" style="width:110px">Buy more</button>
+                         </div>
+                    <form></form>
+                </td>
+                <td><form action="/sell" method="post">
+                         <div class="form-group">
+                         <input type="hidden" name="symbol" type="text" value="{{ row['symbol'] }}"/>
+                         <input autocomplete="off" autofocus class="form-control" size="6" name="shares" placeholder="Shares" type="text">
+                         <button class="btn btn-default" type="submit" style="width:110px">Sell</button>
+                         </div>
+                    <form></form></td>
+            </tr>
+        {% endfor %}
+
+        <tr>
+            <td>CASH</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{{ cash }}</td>
+            <td><a href="/add_cash">Add cash</a></td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <th>{{ total }}</th>
+            <td></td>
+            <td></td>
+        </tr>
+
+
+
+
+    </table>
+{% endblock %}

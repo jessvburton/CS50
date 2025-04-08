@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+
+{% block main %}
+
+    <h2>HISTORY OF TRANSACTIONS</h2>
+
+
+<table class="table table-striped">
+
+        <thead>
+            <th>Stock Symbol</th>
+            <th>Company Name</th>
+            <th>Number of Shares</th>
+            <th>Price per Share</th>
+            <th>Total Price</th>
+            <th>Transacted</th>
+        </thead>
+
+         {% for row in rows %}
+            <tr>
+                <td>{{ row["symbol"] }}</td>
+                <td>{{ row["name"] }}</td>
+                <td>{{ row["shares"] }}</td>
+                <td>{{ row["price_per_share"] }}</td>
+                <td>{{ row["total_price"] }}</td>
+                <td>{{ row["transacted"] }}</td>
+            </tr>
+        {% endfor %}
+
+    </table>
+{% endblock %}

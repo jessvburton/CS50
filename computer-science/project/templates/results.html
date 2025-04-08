@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block title %}{% endblock %}
+
+{% block main %}
+    <h2>Select your Pocket Monsters</h2>
+    <p>Continue searching by Pokemon name or type, or <a href="/search">go back</a></p>
+    <!--search form-->
+    <form action="/results" method="post">
+    <input class="form-control" id="search" name="search" type="text" placeholder="Search..." autofocus>
+    <br>
+    <input type="Submit" class="btn btn-outline-danger">
+    <input type="reset" class="btn btn-outline-danger">
+    </form>
+    <br>
+
+    <b>Your results:</b>
+    {% if pokemon | length != 0 %}
+    <table class="table table-hover" id="demo">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Type</th>
+            <th scope="col">Total</th>
+            <th scope="col">HP</th>
+            <th scope="col">Attack</th>
+            <th scope="col">Defence</th>
+            <th scope="col">Special Attack</th>
+            <th scope="col">Special Defence</th>
+            <th scope="col">Speed</th>
+          </tr>
+        </thead>
+      {% for p in pokemon %}
+        <tr>
+          <td>{{ p[0] }}</td>
+          <td>{{ p[1] }}</td>
+          <td>{{ p[2] }}</td>
+          <td>{{ p[3] }}</td>
+          <td>{{ p[4] }}</td>
+          <td>{{ p[5] }}</td>
+          <td>{{ p[6] }}</td>
+          <td>{{ p[7] }}</td>
+          <td>{{ p[8] }}</td>
+          <td>{{ p[9] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <div id="demo">No search results.</div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% block title %}{% endblock %}
+
+{% block main %}
+    <h1>Select your Pocket Monsters</h1>
+    <form action="/comparison" method="POST">
+        <fieldset>
+            <div class="form-group">
+                <input autocomplete="on" autofocus name="option1" placeholder="Option 1" type="text" id="option1">
+                <input autocomplete="on" autofocus name="option2" placeholder="Option 2" type="text" id="option2">
+                <input type="submit" class="btn btn-outline-danger">
+            </div>
+        </fieldset>
+    </form>
+
+    {% if pokemon1 | length != 0 %}
+    <table class="table table-hover" id="demo">
+        <thead>
+          <tr>
+            <th scope="col">Stats</th>
+            <th scope="col">{{ pokemon1[0][1] }}</th> <!--name-->
+            <th scope="col">{{ pokemon2[0][1] }}</th> <!--name-->
+          </tr>
+        </thead>
+        <tr>
+          <th scope="row">Type</th>
+          <td>{{ pokemon1[0][2] }}</td>
+          <td>{{ pokemon2[0][2] }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Total</th>
+          <td>{{ pokemon1[0][3] }}</td>
+          <td>{{ pokemon2[0][3] }}</td>
+        </tr>
+        <tr>
+          <th scope="row">HP</th>
+          <td>{{ pokemon1[0][4] }}</td>
+          <td>{{ pokemon2[0][4] }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Attack</th>
+          <td>{{ pokemon1[0][5] }}</td>
+          <td>{{ pokemon2[0][5] }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Defence</th>
+          <td>{{ pokemon1[0][6] }}</td>
+          <td>{{ pokemon2[0][6] }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Special Attack</th>
+          <td>{{ pokemon1[0][7] }}</td>
+          <td>{{ pokemon2[0][7] }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Special Defence</th>
+          <td>{{ pokemon1[0][8] }}</td>
+          <td>{{ pokemon2[0][8] }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Speed</th>
+          <td>{{ pokemon1[0][9] }}</td>
+          <td>{{ pokemon2[0][9] }}</td>
+        </tr>
+    </table>
+    {% else %}
+    <div id="demo">No search results.</div>
+    {% endif %}
+{% endblock %}
